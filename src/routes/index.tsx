@@ -41,9 +41,9 @@ function Index() {
   ];
   const stats = [
     { value: "100%", label: "ALUNOS APROVADOS NO ENSINO MÉDIO" },
-    { value: "15:1", label: "RAZÃO MÉDIA DE ALUNOS POR PROFESSOR" },
+    { value: "40:1", label: "RAZÃO MÉDIA DE ALUNOS POR PROFESSOR" },
     { value: "4", label: "CURSOS TÉCNICOS OFERECIDOS" },
-    { value: "6", label: "TURMAS ATIVAS" },
+    { value: "14", label: "TURMAS ATIVAS" },
     { value: "50+", label: "ANOS FORMANDO ESTUDANTES" },
     { value: "1976", label: "ANO DE FUNDAÇÃO" },
   ];
