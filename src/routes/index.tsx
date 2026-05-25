@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState, useCallback } from "react";
 import heroSchool from "@/assets/hero-school.jpg";
+import heroSchool2 from "@/assets/hero-school2.jpg";
+import heroSchool3 from "@/assets/hero-school3.jpg";
 import students from "@/assets/students.jpg";
 
 export const Route = createFileRoute("/")({
