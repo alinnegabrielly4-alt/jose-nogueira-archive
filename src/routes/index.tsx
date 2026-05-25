@@ -316,7 +316,7 @@ function Index() {
             COMO CHEGAR
           </h2>
           <p className="text-center text-slate-600 mt-3 text-sm max-w-2xl mx-auto">
-            O CETI José Nogueira de Aguiar está localizado em Amarante — PI. Veja o mapa abaixo para traçar sua rota.
+            O CETI José Nogueira de Aguiar está localizado em Esperantina — PI. Veja o mapa abaixo para traçar sua rota.
           </p>
           <div className="mt-8 rounded-sm overflow-hidden border border-slate-200 shadow-sm">
             <iframe
@@ -333,7 +333,7 @@ function Index() {
           </div>
           <div className="mt-6 text-center text-sm text-slate-600">
             <div className="font-semibold text-[#003366]">Endereço</div>
-            <div className="mt-1">Amarante — PI, Brasil</div>
+            <div className="mt-1">Esperantina — PI, Brasil</div>
             <a
               href="https://maps.app.goo.gl/EwTFCyee3ZYW6R6G6"
               target="_blank"
