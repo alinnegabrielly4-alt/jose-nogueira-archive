@@ -333,7 +333,7 @@ function Index() {
           </div>
           <div className="mt-6 text-center text-sm text-slate-600">
             <div className="font-semibold text-[#003366]">Endereço</div>
-            <div className="mt-1">Amarante — PI, Brasil</div>
+            <div className="mt-1">Esperantina — PI, Brasil</div>
             <a
               href="https://maps.app.goo.gl/EwTFCyee3ZYW6R6G6"
               target="_blank"
