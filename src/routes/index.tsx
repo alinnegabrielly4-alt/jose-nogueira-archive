@@ -74,26 +74,116 @@ function Index() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative h-[640px] w-full overflow-hidden">
-        <img
-          src={heroSchool}
-          alt="Vista aérea do CETI José Nogueira de Aguiar"
-          width={1920}
-          height={1024}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto h-full flex items-end pb-24 px-6">
-          <div className="text-white max-w-xl">
-            <h1 className="text-5xl md:text-6xl font-light tracking-tight">
-              SUA ESCOLA <br /> PARA A VIDA
-            </h1>
-            <p className="mt-4 text-sm md:text-base opacity-90 leading-relaxed">
-              CETI José Nogueira de Aguiar — escola pública de ensino técnico
-              integrado, formando estudantes desde 1976.
-            </p>
+  const heroSlides = [
+    {
+      img: heroSchool,
+      alt: "Vista aérea do CETI José Nogueira de Aguiar",
+      title: "SUA ESCOLA PARA A VIDA",
+      subtitle:
+        "CETI José Nogueira de Aguiar — escola pública de ensino técnico integrado, formando estudantes desde 1976.",
+    },
+    {
+      img: heroSchool2,
+      alt: "Campus do CETI em dia ensolarado",
+      title: "EDUCAÇÃO DE QUALIDADE",
+      subtitle:
+        "Infraestrutura moderna, laboratórios equipados e professores dedicados ao seu futuro.",
+    },
+    {
+      img: heroSchool3,
+      alt: "Laboratório de ciências do CETI",
+      title: "APRENDIZADO PRÁTICO",
+      subtitle:
+        "Cursos técnicos integrados que preparam você para o mercado de trabalho desde cedo.",
+    },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  }, [heroSlides.length]);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
+  return (
+    <div className="min-h-screen bg-white text-slate-800 font-sans">
+      {/* Top header */}
+      <header className="absolute top-0 left-0 right-0 z-20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
+          <div className="flex items-center gap-3 text-white">
+            <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
+              C
+            </div>
+            <div className="leading-tight">
+              <div className="text-sm font-bold tracking-wide">CETI JOSÉ NOGUEIRA</div>
+              <div className="text-[10px] uppercase tracking-[0.2em] opacity-80">
+                Educação · Trabalho · Cidadania
+              </div>
+            </div>
           </div>
+          <nav className="hidden md:flex items-center gap-7 text-white text-xs font-semibold tracking-widest uppercase">
+            {navLinks.map((l) => (
+              <a key={l} href={`#${l.toLowerCase()}`} className="hover:opacity-70 transition">
+                {l}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Carousel */}
+      <section className="relative h-[640px] w-full overflow-hidden">
+        {heroSlides.map((slide, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              i === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+          >
+            <img
+              src={slide.img}
+              alt={slide.alt}
+              width={1920}
+              height={1024}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+            <div className="relative z-10 max-w-7xl mx-auto h-full flex items-end pb-24 px-6">
+              <div className="text-white max-w-xl">
+                <h1 className="text-5xl md:text-6xl font-light tracking-tight">
+                  {slide.title.split(" ").slice(0, -2).join(" ") && (
+                    <>
+                      {slide.title.split(" ").slice(0, -2).join(" ")} <br />{" "}
+                    </>
+                  )}
+                  {slide.title.split(" ").slice(-2).join(" ")}
+                </h1>
+                <p className="mt-4 text-sm md:text-base opacity-90 leading-relaxed">
+                  {slide.subtitle}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* Slide indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentSlide(i)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                i === currentSlide
+                  ? "bg-white w-8"
+                  : "bg-white/50 hover:bg-white/80"
+              }`}
+              aria-label={`Ir para slide ${i + 1}`}
+            />
+          ))}
         </div>
       </section>
 
