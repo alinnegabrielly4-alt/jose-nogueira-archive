@@ -25,6 +25,12 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function splitTitle(title: string) {
+  const words = title.split(" ");
+  const mid = Math.ceil(words.length / 2);
+  return { top: words.slice(0, mid).join(" "), bottom: words.slice(mid).join(" ") };
+}
+
 function Index() {
   const navLinks = ["História", "Cursos", "Turmas", "Anos", "Eventos"];
   const cursos = [
@@ -47,32 +53,6 @@ function Index() {
     { mes: "AGO", dia: "15", title: "Mostra de Cursos Técnicos", hora: "09:00 — 16:00" },
     { mes: "NOV", dia: "20", title: "Formatura — 3º Ano", hora: "19:00" },
   ];
-
-  return (
-    <div className="min-h-screen bg-white text-slate-800 font-sans">
-      {/* Top header */}
-      <header className="absolute top-0 left-0 right-0 z-20">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-3 text-white">
-            <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
-              C
-            </div>
-            <div className="leading-tight">
-              <div className="text-sm font-bold tracking-wide">CETI JOSÉ NOGUEIRA</div>
-              <div className="text-[10px] uppercase tracking-[0.2em] opacity-80">
-                Educação · Trabalho · Cidadania
-              </div>
-            </div>
-          </div>
-          <nav className="hidden md:flex items-center gap-7 text-white text-xs font-semibold tracking-widest uppercase">
-            {navLinks.map((l) => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="hover:opacity-70 transition">
-                {l}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </header>
 
   const heroSlides = [
     {
@@ -137,38 +117,36 @@ function Index() {
 
       {/* Hero Carousel */}
       <section className="relative h-[640px] w-full overflow-hidden">
-        {heroSlides.map((slide, i) => (
-          <div
-            key={i}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              i === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
-          >
-            <img
-              src={slide.img}
-              alt={slide.alt}
-              width={1920}
-              height={1024}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-            <div className="relative z-10 max-w-7xl mx-auto h-full flex items-end pb-24 px-6">
-              <div className="text-white max-w-xl">
-                <h1 className="text-5xl md:text-6xl font-light tracking-tight">
-                  {slide.title.split(" ").slice(0, -2).join(" ") && (
-                    <>
-                      {slide.title.split(" ").slice(0, -2).join(" ")} <br />{" "}
-                    </>
-                  )}
-                  {slide.title.split(" ").slice(-2).join(" ")}
-                </h1>
-                <p className="mt-4 text-sm md:text-base opacity-90 leading-relaxed">
-                  {slide.subtitle}
-                </p>
+        {heroSlides.map((slide, i) => {
+          const { top, bottom } = splitTitle(slide.title);
+          return (
+            <div
+              key={i}
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                i === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
+            >
+              <img
+                src={slide.img}
+                alt={slide.alt}
+                width={1920}
+                height={1024}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+              <div className="relative z-10 max-w-7xl mx-auto h-full flex items-end pb-24 px-6">
+                <div className="text-white max-w-xl">
+                  <h1 className="text-5xl md:text-6xl font-light tracking-tight">
+                    {top} <br /> {bottom}
+                  </h1>
+                  <p className="mt-4 text-sm md:text-base opacity-90 leading-relaxed">
+                    {slide.subtitle}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         {/* Slide indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
