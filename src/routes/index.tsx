@@ -4,6 +4,7 @@ import heroSchool from "@/assets/hero-school.jpg";
 import heroSchool2 from "@/assets/hero-school2.jpg";
 import heroSchool3 from "@/assets/hero-school3.jpg";
 import students from "@/assets/students.jpg";
+import logoCeti from "@/assets/logo-ceti.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -95,9 +96,11 @@ function Index() {
       <header className="absolute top-0 left-0 right-0 z-20">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
           <div className="flex items-center gap-3 text-white">
-            <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
-              C
-            </div>
+            <img
+              src={logoCeti}
+              alt="Brasão CETI José Nogueira de Aguiar"
+              className="w-12 h-12 object-contain drop-shadow"
+            />
             <div className="leading-tight">
               <div className="text-sm font-bold tracking-wide">CETI JOSÉ NOGUEIRA</div>
               <div className="text-[10px] uppercase tracking-[0.2em] opacity-80">
@@ -319,9 +322,11 @@ function Index() {
       <footer className="bg-white py-10 px-6 border-t border-slate-100">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-start">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full border-2 border-[#003366] flex items-center justify-center text-[#003366] font-bold text-2xl">
-              C
-            </div>
+            <img
+              src={logoCeti}
+              alt="Brasão CETI José Nogueira de Aguiar"
+              className="w-16 h-16 object-contain"
+            />
             <div>
               <div className="text-[#003366] font-bold">CETI JOSÉ NOGUEIRA</div>
               <div className="text-xs uppercase tracking-widest text-slate-500">
