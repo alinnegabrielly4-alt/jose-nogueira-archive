@@ -33,7 +33,7 @@ function splitTitle(title: string) {
 }
 
 function Index() {
-  const navLinks = ["História", "Cursos", "Turmas", "Anos", "Eventos"];
+  const navLinks = ["História", "Cursos", "Turmas", "Anos", "Eventos", "Como Chegar"];
   const cursos = [
     { title: "Desenvolvimento de Sistemas", level: "Curso Técnico Integrado" },
     { title: "Administração", level: "Curso Técnico Integrado" },
@@ -305,6 +305,43 @@ function Index() {
                 <div className="mt-2 text-sm text-slate-600">{a.t}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Como Chegar */}
+      <section id="como-chegar" className="bg-white py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-center text-[#003366] text-2xl font-light tracking-wide">
+            COMO CHEGAR
+          </h2>
+          <p className="text-center text-slate-600 mt-3 text-sm max-w-2xl mx-auto">
+            O CETI José Nogueira de Aguiar está localizado em Amarante — PI. Veja o mapa abaixo para traçar sua rota.
+          </p>
+          <div className="mt-8 rounded-sm overflow-hidden border border-slate-200 shadow-sm">
+            <iframe
+              src="https://maps.google.com/maps?q=-3.8936001,-42.2365656&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Localização do CETI José Nogueira de Aguiar"
+              className="block"
+            />
+          </div>
+          <div className="mt-6 text-center text-sm text-slate-600">
+            <div className="font-semibold text-[#003366]">Endereço</div>
+            <div className="mt-1">Amarante — PI, Brasil</div>
+            <a
+              href="https://maps.app.goo.gl/EwTFCyee3ZYW6R6G6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-xs font-bold tracking-widest text-[#003366] uppercase hover:underline"
+            >
+              Abrir no Google Maps →
+            </a>
           </div>
         </div>
       </section>
