@@ -33,7 +33,7 @@ function splitTitle(title: string) {
 }
 
 function Index() {
-  const navLinks = ["História", "Cursos", "Turmas", "Anos", "Eventos"];
+  const navLinks = ["História", "Cursos", "Turmas", "Anos", "Eventos", "Como Chegar"];
   const cursos = [
     { title: "Desenvolvimento de Sistemas", level: "Curso Técnico Integrado" },
     { title: "Administração", level: "Curso Técnico Integrado" },
